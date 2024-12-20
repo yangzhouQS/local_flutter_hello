@@ -23,6 +23,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
         useMaterial3: true,
+        appBarTheme: AppBarTheme(
+          titleTextStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        )
       ),
 
       routes: {
@@ -93,8 +96,28 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.blue,
+        centerTitle: true,
         title: Text(widget.title),
+        titleTextStyle: TextStyle(color: Colors.white,fontSize: 18),
+        // 左侧图标
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            // 处理菜单点击事件
+            print('菜单按钮被点击');
+          },
+        ),
+        // 右侧图标
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              // 处理搜索点击事件
+              print('搜索按钮被点击');
+            },
+          ),
+        ],
       ),
       body: tabItems[_selectedIndex],
       bottomNavigationBar: new BottomNavigationBar(
