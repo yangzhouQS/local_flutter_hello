@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:tdesign_flutter/tdesign_flutter.dart';
 
-class PageMessage extends StatefulWidget {
+class PageH5 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _PageMessageState();
+    return _PageH5State();
   }
 }
 
-class _PageMessageState extends State<PageMessage> {
+class _PageH5State extends State<PageH5> {
   @override
   Widget build(BuildContext context) {
     return Container(

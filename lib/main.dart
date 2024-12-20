@@ -3,6 +3,7 @@ import 'package:tdesign_flutter/tdesign_flutter.dart';
 import './pages/home/page-home.dart' as PageHome;
 import './pages/message/page-message.dart' as PageMessage;
 import './pages/my/page-my-center.dart' as PageMyCenter;
+import './pages/new-h5/page-h5.dart';
 
 /**
  * 应用入口
@@ -84,6 +85,12 @@ class _MyHomePageState extends State<MyHomePage> {
       tooltip: '',
     ),
     new BottomNavigationBarItem(
+      backgroundColor: Colors.green,
+      icon: Icon(Icons.html),
+      label: 'H5',
+      tooltip: '',
+    ),
+    new BottomNavigationBarItem(
       backgroundColor: Colors.amber,
       icon: Icon(Icons.people),
       label: '我的',
@@ -95,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> tabItems = [
     PageHome.PageHome(),
     PageMessage.PageMessage(),
+    PageH5(),
     PageMyCenter.PageMyCenter(),
   ];
 
@@ -104,13 +112,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     /// 获取屏幕尺寸
     MediaQueryData mq = MediaQuery.of(context);
-    var screenHeight = mq.size.height;
+    var appTitle = Text(widget.title);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
-        title: Text(widget.title),
+        title: appTitle,
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 18),
         // 左侧图标
         leading: IconButton(

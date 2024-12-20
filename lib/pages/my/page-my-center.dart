@@ -20,9 +20,9 @@ class _PageMyCenterState extends State<PageMyCenter> {
           defaultUrl: 'assets/img/td_avatar_1.png',),
         Text('我的头像'),
         SizedBox(width: 32,),
-        Row(
+        Wrap(
           children: [
-            /*TDInput(
+            TDInput(
               leftLabel: '请输入',
               // controller: controller[0],
               backgroundColor: Colors.white,
@@ -34,7 +34,7 @@ class _PageMyCenterState extends State<PageMyCenter> {
                 // controller[0].clear();
                 setState(() {});
               },
-            ),*/
+            ),
             const SizedBox(
               height: 16,
             )
