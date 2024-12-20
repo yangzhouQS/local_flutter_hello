@@ -21,12 +21,12 @@ class MyApp extends StatelessWidget {
       // 应用名称
       title: '基础设施测试应用',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
-        useMaterial3: true,
-        appBarTheme: AppBarTheme(
-          titleTextStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        )
-      ),
+          primarySwatch: Colors.amber,
+          useMaterial3: true,
+          appBarTheme: AppBarTheme(
+            titleTextStyle:
+                const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          )),
 
       routes: {
         // "pageButton": (BuildContext context) => new PageButton(),
@@ -92,20 +92,36 @@ class _MyHomePageState extends State<MyHomePage> {
     PageMyCenter.PageMyCenter(),
   ];
 
+  final GlobalKey globalKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    /// 获取屏幕尺寸
+    MediaQueryData mq = MediaQuery.of(context);
+    var screenHeight = mq.size.height;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
         title: Text(widget.title),
-        titleTextStyle: TextStyle(color: Colors.white,fontSize: 18),
+        titleTextStyle: TextStyle(color: Colors.white, fontSize: 18),
         // 左侧图标
         leading: IconButton(
           icon: Icon(Icons.menu),
           onPressed: () {
             // 处理菜单点击事件
             print('菜单按钮被点击');
+            TDDrawer(context,
+                visible: true,
+                title: "测试标题",
+                placement: TDDrawerPlacement.left,
+                // drawerTop: screenHeight,
+                items: List.generate(
+                    50, (index) => TDDrawerItem(title: 'item$index')).toList(),
+                onItemClick: (index, item) {
+              print('drawer item被点击，index：$index，title：${item.title}');
+            });
           },
         ),
         // 右侧图标

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 // import '../../IconFontIcons.dart';
+import './widget/page-receive.dart';
 
 class PageHome extends StatefulWidget {
   const PageHome({Key? key}) : super(key: key);
@@ -19,7 +20,9 @@ class _PageHomeState extends State<PageHome> {
       {
         "name": "入库",
         "icon": "mq2 mq2-app-rukuguanli",
-        "url": "/receiveList",
+        /*"url": (BuildContext context) => {
+          return new PageReceive();
+        },*/
         "permissionCode": "mq2-rds-app-receive"
       },
       {
@@ -100,6 +103,7 @@ class _PageHomeState extends State<PageHome> {
       return appList.map((item) => InkWell(
         onTap: () {
           print("点击 $item");
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>PageReceive()));
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
