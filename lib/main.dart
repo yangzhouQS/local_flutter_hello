@@ -60,8 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      _counter += 10;
+      _counter += 2;
     });
+
+    TDToast.showIconText("点击:$_counter",
+        icon: TDIcons.check_circle,
+        direction: IconTextDirection.vertical,
+        context: context
+    );
   }
 
   final List<BottomNavigationBarItem> bottomNavItems = [
