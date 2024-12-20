@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tdesign_flutter/tdesign_flutter.dart';
-import './page-button.dart';
-import './page-layout.dart';
+import './pages/home/page-home.dart' as PageHome;
+import './pages/message/page-message.dart' as PageMessage;
+import './pages/my/page-my-center.dart' as PageMyCenter;
 
 /**
  * 应用入口
@@ -25,8 +26,8 @@ class MyApp extends StatelessWidget {
       ),
 
       routes: {
-        "pageButton": (BuildContext context) => new PageButton(),
-        "pageLayout": (BuildContext context) => new PageLayout(),
+        // "pageButton": (BuildContext context) => new PageButton(),
+        // "pageLayout": (BuildContext context) => new PageLayout(),
       },
 
       // 应用首页路由
@@ -65,17 +66,27 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.blue,
       icon: Icon(Icons.home),
       label: '首页',
+      tooltip: '', // 取消长按提示
     ),
     new BottomNavigationBarItem(
       backgroundColor: Colors.green,
       icon: Icon(Icons.message),
       label: '消息',
+      tooltip: '',
     ),
     new BottomNavigationBarItem(
       backgroundColor: Colors.amber,
-      icon: Icon(Icons.verified_user),
+      icon: Icon(Icons.people),
       label: '我的',
+      tooltip: '',
     ),
+  ];
+
+  // 所有的tab对应的页面
+  final List<Widget> tabItems = [
+    PageHome.PageHome(),
+    PageMessage.PageMessage(),
+    PageMyCenter.PageMyCenter(),
   ];
 
   @override
@@ -85,9 +96,36 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
+      body: tabItems[_selectedIndex],
       bottomNavigationBar: new BottomNavigationBar(
         items: bottomNavItems,
+        // 设置文字大小
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+
+        // 当前选中项
         currentIndex: _selectedIndex,
+        // 背景颜色
+        backgroundColor: Colors.white,
+        // 选中项颜色
+        selectedItemColor: Colors.blue,
+        // 未选中项颜色
+        unselectedItemColor: Colors.grey,
+        selectedIconTheme: IconThemeData(
+          // 选中项图标颜色
+          color: Colors.blue,
+          // 选中项图标大小
+          // size: 32,
+          // 选中项图标透明度
+          opacity: 1,
+        ),
+        // 未选中图标主题
+        unselectedIconTheme: IconThemeData(
+          color: Colors.blue,
+          // size: 24,
+          opacity: 0.5,
+        ),
+
         type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
       ),
